@@ -1,2 +1,2 @@
-# csci261_final_project
-Final Project for Spring 2022 CSCI 261 at Colorado School of Mines 
+# Rock Paper Scissors RPG
+I will be writing a RPG game with two main sections, a gym and a final battle arena. The game will track the adventures of a human player as they go from some shleb who has never played rock paper scissors before to a power being ready to take on the evil Dr. Paper who wants to harvest and destroy all the scissors in the world so he can be invincible. The user will be able to train with people in the gym and purchase power ups that might help them in later fights. However, the more they train, the better the Dr. Paper will be as he will learn the player’s habits. The user will interact with the game in a pokemon-esk user interface that will be drawn to terminal.
