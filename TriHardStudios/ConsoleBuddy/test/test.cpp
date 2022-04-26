@@ -1,3 +1,4 @@
+#define CONSOLE_BUDDY_LIB
 #include <ConsoleBuddy/ConsoleBuddy.h>
 
 #include <iostream>
@@ -16,6 +17,6 @@ int main(){
     THS::test(console);
 
 
-    delete console;
+    // delete console;
     return 0;
 }

@@ -1,7 +1,14 @@
+#include "../include/ConsoleBuddy/Pixel.h"
 #include "../include/ConsoleBuddy/HelperStructures.h"
 #include "../include/ConsoleBuddy/Console.h"
 
 #include <iostream>
+#include <cassert>
+
+#ifdef WINDOWS 
+#include <Windows.h>
+
+#endif // WINDOWS
 
 THS::Console::Console(const THS::ConsoleConfig* _config):
     m_config(_config), m_bufferSize(_config->bufferSize)
@@ -10,7 +17,7 @@ THS::Console::Console(const THS::ConsoleConfig* _config):
     m_curBuffer = new Buffer(nullptr, m_bufferSize);
     m_nextBuffer = new Buffer(nullptr, m_bufferSize);
 
-    setUpConsole();
+    assert(setUpConsole());
 }
 
 THS::Console::~Console() {
@@ -36,10 +43,13 @@ void THS::Console::swapBuffers() {
         return;
     }
 
+    std::cout << m_curBuffer->buffer << std::endl;
+
+    
     delete m_curBuffer; // clean up old buffer 
     m_curBuffer = m_nextBuffer;
 
-    m_nextBuffer = {nullptr, m_bufferSize};
+    m_nextBuffer = new Buffer(nullptr, m_bufferSize);
 
 
     drawBuffer();
@@ -65,6 +75,27 @@ void THS::Console::clearScreen() const{
 }
 
 bool THS::Console::setUpConsole() const {
-    std::cout << "\x1B[ ? 1 0 4 9 h";
+    #ifdef WINDOWS
+        HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+        if (hOut == INVALID_HANDLE_VALUE)
+        {
+            return false;
+        }
+
+        DWORD dwMode = 0;
+        if (!GetConsoleMode(hOut, &dwMode))
+        {
+            return false;
+        }
+
+        dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+        if (!SetConsoleMode(hOut, dwMode))
+        {
+            return false;
+        }
+    #endif // WINDOWS
+
+
+    std::cout << "\x1b[ ? 1 0 4 9 h";
     return true;
 }

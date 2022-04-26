@@ -12,6 +12,14 @@ CFLAGS = -Wall $(CXX_STANDARD) -g
 INC_PATH = include/
 LIB_PATH = lib/
 
+LIBS = -l$(TARGET)
+
+ifeq ($(OS), Windows_NT)
+	CFLAGS := -D WINDOWS
+else
+	CFLAGS := -D NIX
+endif
+
 
 
 all: $(TARGET)
@@ -21,13 +29,13 @@ $(TARGET): $(OBJECTS)
 	ar rvs $(LIB_PATH)lib$@.a $^
 
 
-$(OBJECTS): $(SRC_FILES)
-	$(CXX) $(CFLAGS) -o $@ -c $< 
+%.o: %.cpp
+	$(CXX) $(CFLAGS) -o $@ -c $<
 
-
-
-test: $(TARGET) $(TEST_OBJECTS)
-	$(CXX) $(CFLAGS) -o $(TARGET)_$@ $(TEST_OBJECTS) -L$(LIB_PATH) -l$(TARGET) -lm
+test: $(OBJECTS) $(TEST_OBJECTS)
+	$(CXX) $(CFLAGS) -o $(TARGET)_$@ $(TEST_OBJECTS) -L$(LIB_PATH) $(LIBS)
+#   $(CXX) $(CFLAGS) -o $(TARGET)_$@ $^
+	./$(TARGET)_$@
 
 $(TEST_OBJECTS):$(TEST_SRC_FILES)
 	$(CXX) $(CFLAGS) -o $@ -c $< -I$(INC_PATH) 

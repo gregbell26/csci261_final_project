@@ -1,3 +1,5 @@
+#include "../include/ConsoleBuddy/Pixel.h"
+
 #include "../include/ConsoleBuddy/HelperStructures.h"
 
 THS::Size::Size(unsigned int _hieght, unsigned int _width) :
@@ -9,6 +11,6 @@ bool THS::Size::operator != (const Size& SIZE) const {
 }
 
 
-THS::Buffer::Buffer(Pixel**& _buffer, const Size* _size) :
+THS::Buffer::Buffer(Pixel** _buffer, const Size* _size) :
     buffer(_buffer), size(_size)
 {}

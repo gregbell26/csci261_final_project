@@ -1,3 +1,4 @@
+
 #include "../include/ConsoleBuddy/Pixel.h"
 
 THS::Pixel::Pixel(const std::string _color, const char _value) :
@@ -14,7 +15,7 @@ THS::Pixel::Pixel(const Pixel& SRC) :
 
 THS::Pixel THS::Pixel::createFromRGB(short _r, short _g, short _b, const char _value) {
     // do bounds check on r,g,b
-    std::string strColor = "\x1B[";
+    std::string strColor = "\x1b[";
     strColor += std::to_string(_r) + ';';
     strColor += std::to_string(_g) + ';';
     strColor += std::to_string(_b);
@@ -23,11 +24,12 @@ THS::Pixel THS::Pixel::createFromRGB(short _r, short _g, short _b, const char _v
     return Pixel(strColor, _value);
 }  
 
-std::ostream& THS::operator<<(std::ostream& _os, THS::Pixel& SRC){
-    _os << SRC.m_color << SRC.m_value;
-    return _os;
+namespace THS{
+    std::ostream& operator<<(std::ostream& _os, Pixel& SRC){
+        _os << SRC.m_color << SRC.m_value;
+        return _os;
+    }
 }
-
 
 THS::Pixel& THS::Pixel::operator=(const Pixel& SRC) {
     this->~Pixel();
