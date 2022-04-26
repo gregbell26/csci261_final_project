@@ -32,7 +32,7 @@ $(TARGET): $(OBJECTS)
 %.o: %.cpp
 	$(CXX) $(CFLAGS) -o $@ -c $<
 
-test: $(OBJECTS) $(TEST_OBJECTS)
+test: $(TARGET) $(TEST_OBJECTS)
 	$(CXX) $(CFLAGS) -o $(TARGET)_$@ $(TEST_OBJECTS) -L$(LIB_PATH) $(LIBS)
 #   $(CXX) $(CFLAGS) -o $(TARGET)_$@ $^
 	./$(TARGET)_$@
