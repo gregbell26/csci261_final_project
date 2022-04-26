@@ -16,6 +16,8 @@ namespace THS{
         Pixel**& getNextBuffer() const;
 
         const Size* getBufferSize() const;
+
+        
         
         void swapBuffers();
 

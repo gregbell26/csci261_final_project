@@ -6,3 +6,5 @@
 !*.h
 
 !makefile
+!.gitignore
+!*.thsText

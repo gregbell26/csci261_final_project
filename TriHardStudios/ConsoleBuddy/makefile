@@ -28,7 +28,7 @@ all: $(TARGET)
 	$(CXX) $(CFLAGS) -o $@ -c $< -I$(INC_PATH) 
 
 $(LIB_PATH):
-	mkdir $@
+#	mkdir $@
 
 $(TARGET): $(LIB_PATH)lib$(TARGET).a
 

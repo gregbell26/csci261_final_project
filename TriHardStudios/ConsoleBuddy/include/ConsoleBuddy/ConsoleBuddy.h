@@ -18,6 +18,8 @@ namespace THS {
 
     void test(Console*& _console);
 
+    
+
 
 };
 

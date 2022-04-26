@@ -1,12 +1,16 @@
-#include "../include/ConsoleBuddy/Pixel.h"
-#include "../include/ConsoleBuddy/HelperStructures.h"
-#include "../include/ConsoleBuddy/Console.h"
+#include "ConsoleBuddy/Pixel.h"
+#include "ConsoleBuddy/HelperStructures.h"
+#include "ConsoleBuddy/Console.h"
 
 #include <iostream>
 #include <cassert>
 
 #ifdef WINDOWS 
 #include <Windows.h>
+
+    #ifndef ENABLE_VIRTUAL_TERMINAL_PROCESSING // fix for campus computers bc the windows SDK is not the current version
+        #define ENABLE_VIRTUAL_TERMINAL_PROCESSING 0x0004
+    #endif
 
 #endif // WINDOWS
 
@@ -17,7 +21,9 @@ THS::Console::Console(const THS::ConsoleConfig* _config):
     m_curBuffer = new Buffer(nullptr, m_bufferSize);
     m_nextBuffer = new Buffer(nullptr, m_bufferSize);
 
-    assert(setUpConsole());
+    if(!setUpConsole()){
+        exit(-1);
+    }
 }
 
 THS::Console::~Console() {
@@ -27,7 +33,8 @@ THS::Console::~Console() {
     delete m_nextBuffer;
     delete m_bufferSize;
 
-    std::cout << "\x1B[ ? 1 0 4 9 l";
+    std::cout << "\033[?1049l";
+    std::cout << "\033[?25h";
 }
 
 
@@ -66,7 +73,7 @@ void THS::Console::drawBuffer() const {
         std::cout << '\n';
     }
 
-    std::cout.flush(); // after writing the buffer completely, send it to be displayed
+    std::wcout.flush(); // after writing the buffer completely, send it to be displayed
 
 }
 
@@ -96,6 +103,8 @@ bool THS::Console::setUpConsole() const {
     #endif // WINDOWS
 
 
-    std::cout << "\033[ ? 1 0 4 9 h";
+    std::cout << "\033[?1049h";
+    std::cout << "\033[?25l";
+    clearScreen();
     return true;
 }

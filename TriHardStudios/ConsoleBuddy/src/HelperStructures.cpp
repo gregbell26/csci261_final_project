@@ -1,6 +1,6 @@
-#include "../include/ConsoleBuddy/Pixel.h"
+#include "ConsoleBuddy/Pixel.h"
 
-#include "../include/ConsoleBuddy/HelperStructures.h"
+#include "ConsoleBuddy/HelperStructures.h"
 
 THS::Size::Size(unsigned int _hieght, unsigned int _width) :
     hieght(_hieght), width(_width)

@@ -2,6 +2,7 @@
 #define PIXEL_H
 
 #include <ostream>
+#include <istream>
 #include <string>
 
 namespace THS {
@@ -15,9 +16,14 @@ class Pixel {
 
         static Pixel createFromRGB(short _r, short _g, short _b, const char _value);
 
-        friend std::ostream& operator<<(std::ostream& _os, Pixel& SRC);
+        friend std::ostream& operator << (std::ostream& _os, Pixel& src);
+
+        friend std::istream& operator >> (std::istream& _is, Pixel& trgt);
 
         Pixel& operator=(const Pixel& SRC);
+
+    private:
+        static std::string createEscapeSeqFromRGB(short _r, short _g, short _b);
 
     private:
         std::string m_color;
