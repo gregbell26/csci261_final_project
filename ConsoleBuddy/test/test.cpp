@@ -1,6 +1,7 @@
 #include <ConsoleBuddy/ConsoleBuddy.h>
 
 #include <iostream>
+
 int main(){
 
     // const char* tst = "\x1B[38;2;155;10;155m";
@@ -10,7 +11,7 @@ int main(){
     // std::cout << tst << "This is" << tst2<<"some text" << std::endl;
 
 
-    auto console = THS::initalizeConsole();
+    THS::Console* console = THS::initalizeConsole();
 
     THS::test(console);
 

@@ -1,8 +1,9 @@
 #ifndef CONSOLE_BUDDY_H
 #define CONSOLE_BUDDY_H
 
-#include "HelperStructures.h"
 #include "Pixel.h"
+
+#include "HelperStructures.h"
 #include "Console.h"
 namespace THS {
 

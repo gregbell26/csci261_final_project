@@ -23,7 +23,7 @@ THS::Pixel THS::Pixel::createFromRGB(short _r, short _g, short _b, const char _v
     return Pixel(strColor, _value);
 }  
 
-std::ostream& operator<<(std::ostream& _os, THS::Pixel& SRC){
+std::ostream& THS::operator<<(std::ostream& _os, THS::Pixel& SRC){
     _os << SRC.m_color << SRC.m_value;
     return _os;
 }
@@ -34,4 +34,6 @@ THS::Pixel& THS::Pixel::operator=(const Pixel& SRC) {
 
     this->m_color = SRC.m_color;
     this->m_value = SRC.m_value;
+
+    return *this;
 }
