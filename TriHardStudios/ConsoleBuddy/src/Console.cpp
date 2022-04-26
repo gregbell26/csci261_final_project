@@ -71,7 +71,7 @@ void THS::Console::drawBuffer() const {
 }
 
 void THS::Console::clearScreen() const{
-    std::cout << "\x1Bc";
+    std::cout << "\033c";
 }
 
 bool THS::Console::setUpConsole() const {
@@ -96,6 +96,6 @@ bool THS::Console::setUpConsole() const {
     #endif // WINDOWS
 
 
-    std::cout << "\x1b[ ? 1 0 4 9 h";
+    std::cout << "\033[ ? 1 0 4 9 h";
     return true;
 }

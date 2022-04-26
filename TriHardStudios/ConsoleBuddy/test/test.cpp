@@ -16,7 +16,9 @@ int main(){
 
     THS::test(console);
 
+    std::cin.get();
 
-    // delete console;
+
+    delete console;
     return 0;
 }

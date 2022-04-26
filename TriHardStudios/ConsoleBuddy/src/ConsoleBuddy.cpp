@@ -28,8 +28,7 @@ namespace THS {
         buffer[0] = new Pixel[str.size()];
 
         for(unsigned int i = 0; i < str.size(); i++){
-            buffer[0][i] = Pixel::createFromRGB(255,0,255, str[i]); // we are already performing a deep copy so we can let the deconstucture handle it
-            // std::cout << buffer[0][i];
+            buffer[0][i] = Pixel::createFromRGB((i*50)%255,0,(i*25)%255, str[i]); // we are already performing a deep copy so we can let the deconstucture handle it
         }
 
         _console->swapBuffers();
