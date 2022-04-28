@@ -5,8 +5,14 @@ namespace THS {
 
     class Texture {
 
-        
 
+
+
+        
+    private:
+        Pixel** m_data;
+        Size* m_textSize;
+        Size* m_renderLocation;
     };
 
 
