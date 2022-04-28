@@ -1,5 +1,7 @@
 *.*
 .vscode
+sandbox
+sandbox.exe
 
 !*.cpp
 !*.hpp
