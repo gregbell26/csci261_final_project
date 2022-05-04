@@ -21,6 +21,9 @@ class Pixel {
         friend std::istream& operator >> (std::istream& _is, Pixel& trgt);
 
         Pixel& operator=(const Pixel& SRC);
+        
+        // do a shallow copy if we are explity passing a pointer
+        Pixel& operator=(Pixel* SRC);
 
     private:
         static std::string createEscapeSeqFromRGB(short _r, short _g, short _b);

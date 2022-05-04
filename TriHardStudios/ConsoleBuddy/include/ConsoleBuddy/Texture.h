@@ -4,8 +4,19 @@
 namespace THS {
 
     class Texture {
+    public:
+        Texture();
+        Texture(const Texture& SRC);
+
+        ~Texture();
+
+        Texture& operator=(const Texture& SRC);
+        Texture& operator=(Pixel** _SRC);
 
 
+        Pixel** getData() const;
+        Size* getTextureSize() const;
+        Size* getRenderLoaction() const;
 
 
         

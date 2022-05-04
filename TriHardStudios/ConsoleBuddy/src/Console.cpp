@@ -66,7 +66,7 @@ void THS::Console::swapBuffers() {
 void THS::Console::drawBuffer() const {
     clearScreen();
 
-    for(unsigned int i = 0; i < m_bufferSize->hieght; i++){
+    for(unsigned int i = 0; i < m_bufferSize->height; i++){
         for (unsigned int j = 0; j < m_bufferSize->width; j++){
             std::cout << m_curBuffer->buffer[i][j];
         }

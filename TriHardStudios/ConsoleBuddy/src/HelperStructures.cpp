@@ -2,12 +2,24 @@
 
 #include "ConsoleBuddy/HelperStructures.h"
 
-THS::Size::Size(unsigned int _hieght, unsigned int _width) :
-    hieght(_hieght), width(_width)
+THS::Size::Size(unsigned int _height, unsigned int _width) :
+    height(_height), width(_width)
 {}
 
 bool THS::Size::operator != (const Size& SIZE) const {
-    return !(this->hieght == SIZE.hieght && this->width == SIZE.width);
+    return !(this->height == SIZE.height && this->width == SIZE.width);
+}
+
+bool THS::Size::operator == (const Size& SIZE) const {
+    return this->height == SIZE.height && this->width == SIZE.width;
+}
+
+bool THS::Size::operator >  (const Size& SIZE) const {
+    return this->height > SIZE.height || this->width  > SIZE.width;
+}
+bool THS::Size::operator <  (const Size& SIZE) const {
+    return this->height < SIZE.height || this->width  < SIZE.width;
+
 }
 
 

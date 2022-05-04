@@ -3,12 +3,16 @@
 
 namespace THS {
     struct Size {
-        unsigned int hieght;
+        unsigned int height;
         unsigned int width;
 
-        Size(unsigned int _hieght, unsigned int _width);
+        Size(unsigned int _height, unsigned int _width);
 
-        bool operator != (const Size& SIZE) const ;
+        bool operator != (const Size& SIZE) const;
+        bool operator == (const Size& SIZE) const;
+        bool operator >  (const Size& SIZE) const;
+        bool operator <  (const Size& SIZE) const;
+
     };
 
 

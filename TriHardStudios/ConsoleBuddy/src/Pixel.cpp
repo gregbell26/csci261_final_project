@@ -56,3 +56,8 @@ THS::Pixel& THS::Pixel::operator=(const Pixel& SRC) {
 
     return *this;
 }
+
+THS::Pixel& THS::Pixel::operator=(Pixel* SRC){
+
+    return *SRC; // this might seg fault but we shall see
+}
