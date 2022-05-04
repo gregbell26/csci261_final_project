@@ -13,6 +13,10 @@ namespace THS {
         Texture& operator=(const Texture& SRC);
         Texture& operator=(Pixel** _SRC);
 
+        void setSize(const Size& SIZE);
+        void setPosition(const Size& POS);
+        void setData(Pixel** _data);
+
 
         Pixel** getData() const;
         Size* getTextureSize() const;

@@ -10,6 +10,8 @@ class Pixel {
     public:
         Pixel(const std::string _color, const char _value);
 
+        Pixel(const short _r, const short _g, const short _b, const char _value);
+
         Pixel(const Pixel& SRC);
 
         Pixel();
@@ -21,7 +23,7 @@ class Pixel {
         friend std::istream& operator >> (std::istream& _is, Pixel& trgt);
 
         Pixel& operator=(const Pixel& SRC);
-        
+
         // do a shallow copy if we are explity passing a pointer
         Pixel& operator=(Pixel* SRC);
 

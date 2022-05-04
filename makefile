@@ -13,8 +13,10 @@ LIBS = -lConsoleBuddy
 
 ifeq ($(OS), Windows_NT)
 	CFLAGS := -D WINDOWS $(CFLAGS)
+	DEBUG = gdb
 else
 	CFLAGS := -D NIX $(CFLAGS)
+	DEBUG = lldb
 endif
 
 all: $(TARGET)
@@ -30,7 +32,10 @@ $(TARGET): $(OBJECTS) ConsoleBuddy
 	$(CXX) $(CFLAGS) -o $@ $(OBJECTS) -L$(LIB_PATH) $(LIBS)
 
 run: $(TARGET)
-	./$(TARGET)
+	./$^
+
+debug: $(TARGET)
+	$(DEBUG) ./$^
 
 clean:
 	rm $(TARGET) $(OBJECTS)

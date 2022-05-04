@@ -5,6 +5,11 @@ THS::Pixel::Pixel(const std::string _color, const char _value) :
     m_color(_color), m_value(_value)
 {}
 
+THS::Pixel::Pixel(const short _r, const short _g, const short _b, const char _value) :
+    m_color(Pixel::createEscapeSeqFromRGB(_r, _g, _b)), m_value(_value)
+{}
+
+
 THS::Pixel::Pixel() : 
     m_color(""), m_value('\0')
 {}
@@ -21,7 +26,7 @@ THS::Pixel THS::Pixel::createFromRGB(short _r, short _g, short _b, const char _v
 }  
 
 std::string THS::Pixel::createEscapeSeqFromRGB(short _r, short _g, short _b) {
-    std::string strColor = "\x1b[38;2;";
+    std::string strColor = "\033[38;2;";
     strColor += std::to_string(_r) + ';';
     strColor += std::to_string(_g) + ';';
     strColor += std::to_string(_b);

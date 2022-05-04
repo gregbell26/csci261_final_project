@@ -21,6 +21,9 @@ namespace THS {
 
     void addTexturesToBuffer(Buffer*& _buffer, Texture*& _textures, const unsigned int& NUM_TEXTURES);
 
+    void addTexturesToBuffer(Pixel**& _buffer, const Size& BUFFER_SIZE, Texture*& _textures, const unsigned int& NUM_TEXTURES);
+
+
 
     void test(Console*& _console);
 

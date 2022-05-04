@@ -18,8 +18,18 @@ THS::Console::Console(const THS::ConsoleConfig* _config):
     m_config(_config), m_bufferSize(_config->bufferSize)
 {
     // process config here
-    m_curBuffer = new Buffer(nullptr, m_bufferSize);
-    m_nextBuffer = new Buffer(nullptr, m_bufferSize);
+
+
+    //allocating memory for the two buffers - these should be the only two times that memory is allocated for them
+    Pixel** curBufferData = new Pixel*[m_bufferSize->height];
+    Pixel** nextBufferData = new Pixel*[m_bufferSize->height];
+    for(unsigned int i = 0; i < m_bufferSize->height; i++){
+        curBufferData[i] = new Pixel[m_bufferSize->width];
+        nextBufferData[i] = new Pixel[m_bufferSize->width];
+    }
+
+    m_curBuffer = new Buffer(curBufferData, m_bufferSize);
+    m_nextBuffer = new Buffer(nextBufferData, m_bufferSize);
 
     if(!setUpConsole()){
         exit(-1);
